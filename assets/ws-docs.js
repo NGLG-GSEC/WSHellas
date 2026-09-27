@@ -86,8 +86,8 @@ var WSDocs = (function(){
         ] },
       { title:{en:'II. Composition', el:'Σύνθεση'},
         paragraphs:[
-          {en:'The emblem is composed of three parts. The top rocker bears the words WIDOWS SONS MRA. The central oval bears the name Widows Sons in red script above the winged square and compasses, within which stands the all-seeing eye, and beneath them the motto: Meet on the Level & Part upon the Square. The bottom rocker bears the words CHAPTER HELLAS.',
-           el:'Το έμβλημα συντίθεται από τρία μέρη. Το άνω τόξο φέρει τις λέξεις WIDOWS SONS MRA. Το κεντρικό οβάλ φέρει το όνομα Widows Sons με κόκκινη γραφή, άνωθεν του φτερωτού γνώμονα και διαβήτη, εντός των οποίων ίσταται ο πανεπόπτης οφθαλμός, και κάτωθεν αυτών το ρητό: Meet on the Level & Part upon the Square. Το κάτω τόξο φέρει τις λέξεις CHAPTER HELLAS.'},
+          {en:'The emblem is composed of three parts. The top rocker bears the words WIDOWS SONS. The central oval bears the name Widows Sons in red script above the winged square and compasses, within which stands the all-seeing eye, and beneath them the motto: Meet on the Level & Part upon the Square. The bottom rocker bears the words HELLAS CHAPTER.',
+           el:'Το έμβλημα συντίθεται από τρία μέρη. Το άνω τόξο φέρει τις λέξεις WIDOWS SONS. Το κεντρικό οβάλ φέρει το όνομα Widows Sons με κόκκινη γραφή, άνωθεν του φτερωτού γνώμονα και διαβήτη, εντός των οποίων ίσταται ο πανεπόπτης οφθαλμός, και κάτωθεν αυτών το ρητό: Meet on the Level & Part upon the Square. Το κάτω τόξο φέρει τις λέξεις HELLAS CHAPTER.'},
           {en:'No element of the emblem may be altered, omitted or added to, nor may its colours be changed.',
            el:'Ουδέν στοιχείο του εμβλήματος επιτρέπεται να μεταβληθεί, να παραλειφθεί ή να προστεθεί, ούτε να αλλοιωθούν τα χρώματά του.'}
         ] },
@@ -325,8 +325,8 @@ var WSDocs = (function(){
       { title:{en:'III. The Emblem Borne by the Chapter', el:'Το έμβλημα που φέρει το Chapter'},
         image:'emblem', width:104, caption:'The emblem of Widows Sons MRA — Chapter Hellas',
         paragraphs:[
-          {en:'The petitioners submit the emblem set out above as the emblem the Chapter shall bear. Its top rocker reads WIDOWS SONS MRA; its central oval carries the name Widows Sons in red script above the winged square and compasses, within which stands the all-seeing eye, and beneath them the motto, Meet on the Level & Part upon the Square; its bottom rocker reads CHAPTER HELLAS.',
-           el:'Οι αιτούντες υποβάλλουν το ανωτέρω έμβλημα ως το έμβλημα που θα φέρει το Chapter. Το άνω τόξο φέρει τις λέξεις WIDOWS SONS MRA· το κεντρικό οβάλ φέρει το όνομα Widows Sons με κόκκινη γραφή, άνωθεν του φτερωτού γνώμονα και διαβήτη, εντός των οποίων ίσταται ο πανεπόπτης οφθαλμός, και κάτωθεν αυτών το ρητό Meet on the Level & Part upon the Square· το κάτω τόξο φέρει τις λέξεις CHAPTER HELLAS.'},
+          {en:'The petitioners submit the emblem set out above as the emblem the Chapter shall bear. Its top rocker reads WIDOWS SONS; its central oval carries the name Widows Sons in red script above the winged square and compasses, within which stands the all-seeing eye, and beneath them the motto, Meet on the Level & Part upon the Square; its bottom rocker reads HELLAS CHAPTER.',
+           el:'Οι αιτούντες υποβάλλουν το ανωτέρω έμβλημα ως το έμβλημα που θα φέρει το Chapter. Το άνω τόξο φέρει τις λέξεις WIDOWS SONS· το κεντρικό οβάλ φέρει το όνομα Widows Sons με κόκκινη γραφή, άνωθεν του φτερωτού γνώμονα και διαβήτη, εντός των οποίων ίσταται ο πανεπόπτης οφθαλμός, και κάτωθεν αυτών το ρητό Meet on the Level & Part upon the Square· το κάτω τόξο φέρει τις λέξεις CHAPTER HELLAS.'},
           {en:'The name, the emblem and the insignia are acknowledged to belong to Widows Sons MRA. The Chapter and its members shall hold them only while in good standing, and shall return every patch upon demand or upon a brother’s departure.',
            el:'Το όνομα, το έμβλημα και τα διακριτικά αναγνωρίζεται ότι ανήκουν στη Widows Sons MRA. Το Chapter και τα μέλη του θα τα κατέχουν μόνον εφόσον τελούν εν καλή καταστάσει και θα επιστρέφουν κάθε patch εφόσον ζητηθεί ή κατά την αποχώρηση του αδελφού.'}
         ] },
