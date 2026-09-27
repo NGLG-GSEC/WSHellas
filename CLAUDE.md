@@ -2,14 +2,14 @@
 
 The public website of the Chapter, served by GitHub Pages.
 
-**Live site: https://dskiad.github.io/WSHellas/**
+**Live site: https://nglg-gsec.github.io/WSHellas/**
 
 ## Always end a reply with the live link
 
 Every answer finishes with the live page link, on its own line:
 
 ```
-🌐 Live: https://dskiad.github.io/WSHellas/
+🌐 Live: https://nglg-gsec.github.io/WSHellas/
 ```
 
 When the work touched another page, give that page's link too —
