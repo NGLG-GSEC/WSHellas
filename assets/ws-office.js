@@ -18,7 +18,7 @@ var WSDoc = (function(){
      renderer older than the register it is asked to draw. Raise it
      whenever a document, the renderer or the register changes, and raise
      it in the same breath on the pages that carry the art. */
-  var EDITION = '20260928b';
+  var EDITION = '20260928c';
   var PARTS = ['assets/vendor/jspdf.umd.min.js',
                'assets/vendor/jspdf.plugin.autotable.min.js',
                'assets/vendor/ws-fonts.js',

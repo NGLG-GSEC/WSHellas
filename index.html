@@ -1933,7 +1933,7 @@ document.head.appendChild(Object.assign(document.createElement('script'),
 (function(){
   var btn = document.getElementById('officersLetterBtn'), note = document.getElementById('officersLetterNote');
   if(!btn){ return; }
-  var ED = '20260928b', ready = null;
+  var ED = '20260928c', ready = null;
   function load(src){ return new Promise(function(ok, no){ var s = document.createElement('script'); s.src = src + '?v=' + ED; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); }
   btn.addEventListener('click', function(){
     var keep = note.textContent;

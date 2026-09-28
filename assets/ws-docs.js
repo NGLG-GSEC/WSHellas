@@ -585,7 +585,7 @@ var WSDocs = (function(){
   /* -----------------------------------------------------------------
      The Letter of the Officers — a formal letter giving every office of
      Article V, the real name of the brother who holds it and his road
-     name. Drawn from OFFICERS, so it always says what Section 04 says.
+     name. Secretariat no. 6 (no. 5 is the Register, ws-register.js). Drawn from OFFICERS, so it always says what Section 04 says.
      It is dated on the day it is issued, not on the founding date.
      ----------------------------------------------------------------- */
   var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -594,7 +594,7 @@ var WSDocs = (function(){
 
   function officersLetter(){
     var t = today(), F = filled().length;
-    var spec = secretariat(5, {en:'Letter of the Officers', el:'Επιστολή Αξιωματικών'}, [
+    var spec = secretariat(6, {en:'Letter of the Officers', el:'Επιστολή Αξιωματικών'}, [
 
       { title:{en:'I. Address', el:'Προσφώνηση'},
         paragraphs:[
@@ -664,7 +664,7 @@ var WSDocs = (function(){
     { no:4, category:'secretariat', build:roster,
       title:{en:'Report of the Officers and the Members', el:'Έκθεση Αξιωματικών και Μελών'},
       note:'Every office of Article V, the brother who holds it and his term, with the roll of members — counted and drawn at the head.' },
-    { no:5, category:'secretariat', build:officersLetter,
+    { no:6, category:'secretariat', build:officersLetter,
       title:{en:'Letter of the Officers', el:'Επιστολή Αξιωματικών'},
       note:'A formal letter giving every office, the real name of the brother who holds it and his road name.' }
   ];

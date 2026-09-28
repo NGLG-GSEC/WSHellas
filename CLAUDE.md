@@ -149,12 +149,35 @@ The overlay must carry `[hidden]{display:none}` of its own: its `display:flex`
 otherwise outranks the `hidden` attribute and an invisible panel sits over the
 whole page, swallowing every click.
 
+### The Register of Members and Officers — Secretariat unit 5
+
+`assets/ws-register.js` puts unit 5 on the Secretary's page: a full-screen
+register of every member and officer — name, surname, road name, mobile,
+email, office rank, honorary title (No / Honorary / Most Honorary) and its
+date, and the dates of entry as supporter (prospect) and as full member.
+
+- **It is never stored on the site.** The site is public and has no server,
+  so the register lives only in the Secretary's browser (`localStorage`,
+  key `ws-register-v1`). The exported Excel file is the master copy. Never
+  commit a register export or any member's contact details to this repo.
+- **Fields are one array, `FIELDS`.** Add a line there and the form, the
+  table, the export and the import all follow. A column the Excel carries
+  that `FIELDS` does not know is kept with the member and written back.
+- **Export and import are behind the code and the seal**, as is deleting a
+  member. Import shows new / updated / unchanged / not-taken first, and
+  writes nothing until the seal is pressed. A row with a known ID updates
+  that member; no ID or a new ID adds one.
+- **Dates cross Excel as day numbers, in UTC.** Written as JS Dates they
+  came back a day early (the library shifts them by the time zone).
+- SheetJS lives in `assets/vendor/xlsx.full.min.js` (0.18.5, Apache-2.0) and
+  is loaded only when Excel is first used.
+
 ### The Letter of the Officers
 
 Under the officers of Section 04 a button, **Letter of the Officers**, issues a
 formal letter as a sealed, signed PDF: every office of Article V with the real
 name of the brother who holds it and his road name. It is Secretariat document
-no. 5 in `ws-docs.js` (`officersLetter`), drawn from the same `OFFICERS` array,
+no. 6 in `ws-docs.js` (`officersLetter`), drawn from the same `OFFICERS` array,
 so a name or road name entered there reaches the letter; a road name not yet
 entered reads *to be advised*. It is dated the day it is issued and saved as
 `Hellas-Chapter-Letter-of-the-Officers-DDMMYY-v1.pdf` (`spec.file`). The main
