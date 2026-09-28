@@ -151,19 +151,12 @@ levelled with `align-items:stretch` and `h3{margin-top:auto}`, because the two
 photographs are framed a little differently and the titles otherwise sit at
 different heights.
 
-The technical part sits behind a `<details>` button and opens on demand: a
-native disclosure, no script, and its summary is translated like any other
-block. The specification sheet inside it reports `naturalWidth === 0` until the
-button is opened — a closed `<details>` keeps it out of layout, so lazy loading
-never fires. That is correct, not a broken image; check it with the disclosure
-open.
-
-The measurements on the page (50 × 32 mm, 2.5–3.0 mm thick, N52 magnet) are
-taken from `assets/pin-spec-sheet.jpg`, which is the sheet shown — **and that
-sheet is drawn for the braided border**, so it governs the Chair's pin; the
-members' differs only in its edge, as the caption says. A second sheet exists,
-`assets/pin-spec-sheet-2.jpg`, and it disagrees — 29 mm tall, 4.5 mm thick,
-magnet Ø10 × 3 mm. Settle which governs before anything is struck.
+The technical part (Part 03.2 — how it is made: the specification list and
+the maker's sheet) was struck out at the Chapter's word. The sheets remain in
+`assets/`: `pin-spec-sheet.jpg` is drawn for the braided border (50 × 32 mm,
+2.5–3.0 mm, N52 magnet) and `pin-spec-sheet-2.jpg` disagrees with it (29 mm
+tall, 4.5 mm thick, magnet Ø10 × 3 mm). Settle which governs before anything
+is struck.
 
 ## The visitors' memo
 
