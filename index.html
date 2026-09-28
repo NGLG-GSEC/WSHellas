@@ -443,6 +443,14 @@ section + section{border-top:1px solid var(--stitch);}
 .pillar-block h3{font-size:22px; margin-bottom:10px; color:var(--gold-bright);}
 .pillar-block p{color:var(--bone-dim);}
 .pillar-block + .pillar-block{margin-top:36px;}
+/* brushed stainless (inox) lettering */
+.pillar-block h3.inox-title{font-size:38px;font-weight:700;line-height:1.1;letter-spacing:.07em;text-transform:uppercase;
+  background:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.10) 0 1px,rgba(0,0,0,.08) 1px 3px),
+    linear-gradient(180deg,#ffffff 0%,#e4e8ec 18%,#7d858e 44%,#5d646c 50%,#dfe4e9 56%,#f6f8fa 70%,#9aa2ab 88%,#c7ccd2 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 -1px 0 rgba(255,255,255,.25)) drop-shadow(0 1px 0 #1b1d20) drop-shadow(0 3px 4px rgba(0,0,0,.9))}
+@media(max-width:780px){.pillar-block h3.inox-title{font-size:29px}}
 .quote-block{
   font-family:'Cinzel',serif; font-size:22px; line-height:1.5; color:var(--bone);
   border-left:2px solid var(--crimson); padding-left:22px; margin:36px 0;
@@ -1215,8 +1223,8 @@ footer .fmotto{font-family:'Mrs Saint Delafield',cursive; color:var(--crimson-br
           <p>The Widows Sons Masonic Riders Association (Widows Sons MRA) is an international fraternity of motorcycle-riding Freemasons, founded by Carl A. Davenport. Membership is open exclusively to Master Masons (Third Degree) in good standing with a regularly recognized Grand Lodge. Chapters ride together, support one another, and carry out charitable work — with particular care for the widows of Master Masons and their families, in keeping with the association's name.</p>
         </div>
         <div class="pillar-block">
-          <h3>Chapter Hellas</h3>
-          <p>Widows Sons MRA Chapter Hellas is an independent Chapter of the Association, established and constituted with the valuable support and fraternal assistance of <span class="ws-bulgaria">Widows Sons Bulgaria</span> and of our American brethren — with particular and heartfelt thanks to Joe Norman &laquo;Storman&raquo; of Chicago, President of the American Chapter, and to Wilheim Neiszer &laquo;Wilhelm&raquo; of Mexico. The Chapter operates in full autonomy, while maintaining strong bonds of international friendship and mutual support within the worldwide Widows Sons network, and may propose the formation of new sub-chapters within Greek territory through its Chapter Committee.</p>
+          <h3 class="inox-title">Hellas Chapter</h3>
+          <p>Widows Sons MRA Hellas Chapter is an independent Chapter of the Association, established and constituted with the valuable support and fraternal assistance of <span class="ws-bulgaria">Widows Sons Bulgaria</span> and of our American brethren — with particular and heartfelt thanks to Joe Norman &laquo;Storman&raquo; of Chicago, President of the American Chapter, and to Wilheim Neiszer &laquo;Wilhelm&raquo; of Mexico. The Chapter operates in full autonomy, while maintaining strong bonds of international friendship and mutual support within the worldwide Widows Sons network, and may propose the formation of new sub-chapters within Greek territory through its Chapter Committee.</p>
         </div>
         <div class="pillar-block">
           <h3>Purpose</h3>
