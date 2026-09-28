@@ -29,10 +29,9 @@
 (function(){
   var KEY = 'ws-register-v1', CODE = '1966';
   var HONOURS = ['No', 'Honorary', 'Most Honorary'];
-  var OFFICES_FALLBACK = ['President','Vice President','Secretary','Treasurer','Sergeant-at-Arms',
-    'Road Captain','Road Sergeant','Warden','Orator','Ambassador','Almoner','Quartermaster',
-    'Master of Ceremonies','Preparing Brother','Event Manager'];
-  var offices = OFFICES_FALLBACK.concat(['Member']);
+  /* Office ranks come from WSRanks (assets/ws-ranks.js), the one list the
+     whole of the Chapter's apps share. Nothing is typed in here. */
+  function ranks(){ return window.WSRanks ? window.WSRanks.names() : ['Member']; }
 
   var FIELDS = [
     { key:'id',           en:'ID',                          el:'Α/Α',                     auto:true, list:true },
@@ -41,7 +40,7 @@
     { key:'road',         en:'Road name',                   el:'Όνομα δρόμου',            upper:true, list:true },
     { key:'mobile',       en:'Mobile',                      el:'Κινητό',                  type:'tel', list:true },
     { key:'email',        en:'Email',                       el:'Email',                   type:'email', list:true },
-    { key:'office',       en:'Office rank',                 el:'Αξίωμα',                  type:'select', options:function(){ return offices; }, dflt:'Member', list:true },
+    { key:'office',       en:'Office rank',                 el:'Αξίωμα',                  type:'select', options:ranks, dflt:'Member', list:true },
     { key:'honorary',     en:'Honorary title',              el:'Επίτιμος τίτλος',         type:'select', options:function(){ return HONOURS; }, dflt:'No', list:true },
     { key:'honoraryDate', en:'Date of honorary',            el:'Ημ/νία επίτιμου',         type:'date', list:true },
     { key:'founder',      en:'Founder',                     el:'Ιδρυτής',                 type:'select', options:function(){ return ['No','Yes']; }, dflt:'No', list:true },
@@ -227,7 +226,7 @@
     });
   }
 
-  function open(){ if(!over) build(); over.hidden = false; document.body.style.overflow = 'hidden'; document.body.classList.add('reg-open'); render(); readOffices(); }
+  function open(){ if(!over) build(); over.hidden = false; document.body.style.overflow = 'hidden'; document.body.classList.add('reg-open'); render(); }
   function close(){ over.hidden = true; document.body.style.overflow = ''; document.body.classList.remove('reg-open'); }
 
   function cell(f, r){
@@ -270,17 +269,6 @@
       (pending ? '<span class="warn">Changes not yet exported to Excel</span>'
                : (store.exported ? '<span class="ok">Exported ' + new Date(store.exported).toLocaleString('en-GB') + '</span>' : '')) +
       '<span>Kept on this device only &mdash; the Excel file is the master copy</span>';
-  }
-
-  /* offices read from the officers of the Chapter, as the configurator does */
-  var officesRead = false;
-  function readOffices(){
-    if(officesRead) return; officesRead = true;
-    fetch('index.html', {cache:'no-cache'}).then(function(r){ return r.text(); }).then(function(h){
-      var d = new DOMParser().parseFromString(h, 'text/html');
-      var list = Array.prototype.map.call(d.querySelectorAll('#administration .ws-office-en'), function(e){ return e.textContent.trim(); }).filter(Boolean);
-      if(list.length) offices = list.filter(function(v, i){ return list.indexOf(v) === i; }).concat(['Member']);
-    }).catch(function(){});
   }
 
   /* ------------------------------------------------------------ the form */
@@ -412,7 +400,7 @@
           ['Keep the column headings exactly as they are. Dates may be written as dd/mm/yyyy.'],
           ['Honorary title: No, Honorary or Most Honorary.'],
           ['Founder: Yes or No.'],
-          ['Office rank: one of the offices of Article V, or Member.'],
+          ['Office rank: one of the offices of Article V, Grand Master or Member — the same list as every rank drop-down of the Chapter.'],
           [''],
           ['CONFIDENTIAL — personal details of the brethren. Keep with the Secretariat.']
         ]);

@@ -149,11 +149,23 @@ The overlay must carry `[hidden]{display:none}` of its own: its `display:flex`
 otherwise outranks the `hidden` attribute and an invisible panel sits over the
 whole page, swallowing every click.
 
+### Office ranks — one list for every app
+
+`assets/ws-ranks.js` (`WSRanks`) is **the only list of office ranks**: the 15
+offices of Article V in Section 04's order, then Grand Master and Member.
+Every rank drop-down reads it and nothing else — the Register on the
+Secretary's page, and the vest configurator (`dskiad/wsvest`), which loads
+the script from `https://nglg-gsec.github.io/WSHellas/assets/ws-ranks.js`.
+It is a script and not JSON so another site may load it without CORS.
+Change a rank there, and keep Section 04 in step: the main page compares
+the two on every load and warns in the console if they part. The list is
+made unique on load, so a rank can never appear twice.
+
 ### The Register of Members and Officers — Secretariat unit 5
 
 `assets/ws-register.js` puts unit 5 on the Secretary's page: a full-screen
 register of every member and officer — name, surname, road name, mobile,
-email, office rank, honorary title (No / Honorary / Most Honorary) and its
+email, office rank (from `WSRanks`), honorary title (No / Honorary / Most Honorary) and its
 date, founder (Yes / No), and the dates of entry as supporter (prospect) and as full member.
 
 - **It is never stored on the site.** The site is public and has no server,

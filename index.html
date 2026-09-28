@@ -1946,6 +1946,19 @@ document.head.appendChild(Object.assign(document.createElement('script'),
   });
 })();
 </script>
+<script src="assets/ws-ranks.js?v=20260928"></script>
+<script>
+/* Section 04 and WSRanks must name the same offices in the same order. The
+   page checks itself on every load, so the two can never part unnoticed. */
+(function(){
+  if(!window.WSRanks) return;
+  var page = Array.prototype.map.call(document.querySelectorAll('#administration .ws-office-en'), function(e){ return e.textContent.trim(); });
+  var list = WSRanks.offices();
+  if(page.join('|') !== list.join('|')){
+    console.warn('Office ranks out of step. Section 04:', page, 'WSRanks (assets/ws-ranks.js):', list);
+  }
+})();
+</script>
 <script src="assets/ws-charges.js?v=20260928"></script>
 <script src="assets/ws-imgno.js?v=20260928"></script>
 </body>
