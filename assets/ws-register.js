@@ -44,6 +44,7 @@
     { key:'office',       en:'Office rank',                 el:'Αξίωμα',                  type:'select', options:function(){ return offices; }, dflt:'Member', list:true },
     { key:'honorary',     en:'Honorary title',              el:'Επίτιμος τίτλος',         type:'select', options:function(){ return HONOURS; }, dflt:'No', list:true },
     { key:'honoraryDate', en:'Date of honorary',            el:'Ημ/νία επίτιμου',         type:'date', list:true },
+    { key:'founder',      en:'Founder',                     el:'Ιδρυτής',                 type:'select', options:function(){ return ['No','Yes']; }, dflt:'No', list:true },
     { key:'supportDate',  en:'Entered as supporter (prospect)', el:'Είσοδος ως υποστηρικτής (δόκιμος)', type:'date', list:true },
     { key:'fullDate',     en:'Entered as full member',      el:'Είσοδος ως πλήρες μέλος', type:'date', list:true },
     { key:'notes',        en:'Notes',                       el:'Σημειώσεις',              type:'textarea' }
@@ -91,6 +92,10 @@
     if(f.type === 'email') v = v.toLowerCase();
     if(f.type === 'select'){
       var opts = f.options(), hit = opts.filter(function(o){ return o.toLowerCase() === v.toLowerCase(); })[0];
+      if(f.key === 'founder'){
+        if(/^(yes|ναι|y|founder|ιδρυτής|ιδρυτης|true|1)$/i.test(v)) hit = 'Yes';
+        if(/^(no|όχι|οχι|n|false|0|)$/i.test(v)) hit = 'No';
+      }
       if(f.key === 'honorary'){
         if(/^(yes|ναι|y)$/i.test(v)) hit = 'Honorary';
         if(/^(no|όχι|οχι|n|)$/i.test(v)) hit = 'No';
@@ -142,7 +147,7 @@
   '.reg-table td.road{font:600 12.5px Oswald,sans-serif;letter-spacing:.12em;color:#e05a61}' +
   '.reg-table td .muted{color:var(--steel-dim)}' +
   '.reg-table .tag{display:inline-block;padding:2px 8px;border:1px solid var(--stitch);font:600 10.5px Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase}' +
-  '.reg-table .tag.h{border-color:#8b8f96;color:#d6d9de}.reg-table .tag.mh{border-color:var(--gold-bright);color:var(--gold-bright)}' +
+  '.reg-table .tag.fd{border-color:#c22a2a;color:#ff8f8f}.reg-table .tag.h{border-color:#8b8f96;color:#d6d9de}.reg-table .tag.mh{border-color:var(--gold-bright);color:var(--gold-bright)}' +
   '.reg-row-acts{white-space:nowrap}.reg-row-acts button{background:none;border:1px solid var(--stitch);color:var(--bone-dim);font:600 10.5px Oswald,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;cursor:pointer;margin-left:4px}' +
   '.reg-row-acts button:hover{border-color:var(--gold);color:var(--bone)}.reg-row-acts button.del:hover{border-color:var(--crimson-bright);color:#ff8f8f}' +
   '.reg-empty{text-align:center;color:var(--steel-dim);padding:70px 20px;font-size:17px}' +
@@ -229,6 +234,7 @@
     var v = r[f.key] || '';
     if(f.key === 'id') return '<td class="id">' + esc(v) + '</td>';
     if(f.key === 'road') return '<td class="road">' + (v ? '«' + esc(v) + '»' : '<span class="muted">—</span>') + '</td>';
+    if(f.key === 'founder') return '<td>' + (v === 'Yes' ? '<span class="tag fd">Founder</span>' : '<span class="muted">No</span>') + '</td>';
     if(f.key === 'honorary') return '<td>' + (v === 'Most Honorary' ? '<span class="tag mh">Most Honorary</span>' : v === 'Honorary' ? '<span class="tag h">Honorary</span>' : '<span class="muted">No</span>') + '</td>';
     if(f.type === 'date') return '<td class="nw">' + (v ? esc(showDate(v)) : '<span class="muted">—</span>') + '</td>';
     if(f.type === 'email' && v) return '<td><a href="mailto:' + esc(v) + '">' + esc(v) + '</a></td>';
@@ -256,10 +262,11 @@
     });
     var full = store.members.filter(function(r){ return r.fullDate; }).length;
     var hon = store.members.filter(function(r){ return r.honorary && r.honorary !== 'No'; }).length;
+    var fnd = store.members.filter(function(r){ return r.founder === 'Yes'; }).length;
     var pending = store.updated > (store.exported || 0) && store.members.length;
     stateEl.innerHTML =
       '<span>' + store.members.length + ' in the register</span><span>' + full + ' full members</span>' +
-      '<span>' + (store.members.length - full) + ' supporters / prospects</span><span>' + hon + ' honorary</span>' +
+      '<span>' + (store.members.length - full) + ' supporters / prospects</span><span>' + hon + ' honorary</span><span>' + fnd + ' founders</span>' +
       (pending ? '<span class="warn">Changes not yet exported to Excel</span>'
                : (store.exported ? '<span class="ok">Exported ' + new Date(store.exported).toLocaleString('en-GB') + '</span>' : '')) +
       '<span>Kept on this device only &mdash; the Excel file is the master copy</span>';
@@ -393,7 +400,7 @@
           }).concat(extra.map(function(k){ return r[k] || ''; }));
         });
         var ws = X.utils.aoa_to_sheet([head].concat(rows));
-        ws['!cols'] = head.map(function(h, i){ return { wch: [8,16,18,16,16,28,22,15,15,20,20,36][i] || 18 }; });
+        ws['!cols'] = head.map(function(h, i){ return { wch: [8,16,18,16,16,28,22,15,15,10,20,20,36][i] || 18 }; });
         ws['!autofilter'] = { ref: X.utils.encode_range({ s:{r:0, c:0}, e:{r:rows.length, c:head.length - 1} }) };
         var about = X.utils.aoa_to_sheet([
           ['Widows Sons MRA — Hellas Chapter · Register of Members and Officers'],
@@ -404,6 +411,7 @@
           ['A row whose ID is already in the register updates that member. A row with no ID, or a new ID, is added as a new member.'],
           ['Keep the column headings exactly as they are. Dates may be written as dd/mm/yyyy.'],
           ['Honorary title: No, Honorary or Most Honorary.'],
+          ['Founder: Yes or No.'],
           ['Office rank: one of the offices of Article V, or Member.'],
           [''],
           ['CONFIDENTIAL — personal details of the brethren. Keep with the Secretariat.']
@@ -438,7 +446,10 @@
         if(!row.some(function(c){ return String(c).trim() !== ''; })) return;
         var rec = {};
         map.forEach(function(m, c){ if(!m) return; if(m.f) rec[m.f.key] = clean(m.f, row[c]); else if(String(row[c]).trim() !== '') rec[m.extra] = String(row[c]).trim(); });
-        FIELDS.forEach(function(f){ if(!(f.key in rec)) rec[f.key] = f.dflt || ''; });
+        var cur0 = rec.id ? store.members.filter(function(m){ return m.id === rec.id; })[0] : null;
+        // a column the file does not carry (an older export, say) leaves the
+        // member's value as it is; only a new member takes the defaults
+        FIELDS.forEach(function(f){ if(!(f.key in rec)) rec[f.key] = cur0 ? (cur0[f.key] || '') : (f.dflt || ''); });
         var p = problems(rec);
         if(rec.id && seen[rec.id]) p.push('ID ' + rec.id + ' appears twice in the file');
         if(p.length){ bad.push('Row ' + (i + 2) + ' (' + (rec.name || '?') + ' ' + (rec.surname || '') + '): ' + p.join('; ')); return; }

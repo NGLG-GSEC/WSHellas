@@ -154,7 +154,7 @@ whole page, swallowing every click.
 `assets/ws-register.js` puts unit 5 on the Secretary's page: a full-screen
 register of every member and officer — name, surname, road name, mobile,
 email, office rank, honorary title (No / Honorary / Most Honorary) and its
-date, and the dates of entry as supporter (prospect) and as full member.
+date, founder (Yes / No), and the dates of entry as supporter (prospect) and as full member.
 
 - **It is never stored on the site.** The site is public and has no server,
   so the register lives only in the Secretary's browser (`localStorage`,
@@ -166,7 +166,8 @@ date, and the dates of entry as supporter (prospect) and as full member.
 - **Export and import are behind the code and the seal**, as is deleting a
   member. Import shows new / updated / unchanged / not-taken first, and
   writes nothing until the seal is pressed. A row with a known ID updates
-  that member; no ID or a new ID adds one.
+  that member; no ID or a new ID adds one. A column the file does not carry leaves that
+  field as it is, so an older export never resets a newer field.
 - **Dates cross Excel as day numbers, in UTC.** Written as JS Dates they
   came back a day early (the library shifts them by the time zone).
 - SheetJS lives in `assets/vendor/xlsx.full.min.js` (0.18.5, Apache-2.0) and
