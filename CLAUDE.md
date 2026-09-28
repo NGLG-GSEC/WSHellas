@@ -136,20 +136,19 @@ the height was set for.
 
 ## The pin
 
-Section 03 shows the extra regalia: one pin in two borders. The **braided
-silver** is for the **Presidents, the Most Honorary (Grand Masters) and the
-Founders**; the **plain gold edge**, with no silver on the triangle at all, is
-worn by all other members. The centre and the wings are identical — the border
-is the whole distinction. Both are cut out of their white ground and carried
-as WebP.
+Section 03 shows the extra regalia in one part, **03.1 — The Pin**, as two
+cards: **the pin** (the helmet roundel on a gold triangle between gold
+wings), worn upon the vest or in a Masonic Lodge where the Lodge accepts it;
+and **the token** (the struck coin in its leather case), exchanged as a gift
+between Widows Sons brothers. The former pair — the braided silver and the
+plain gold edge — was struck out at the Chapter's word; its files remain in
+`assets/`.
 
-**The section shows and does not explain.** It carries the two pins — each an
-image, its name and the one line saying who wears it — and nothing else; the
-lead, the readings of each border, the *how it is told* notes and the rule on
-the common centre were all struck out at the Chapter's word. The two cards are
-levelled with `align-items:stretch` and `h3{margin-top:auto}`, because the two
-photographs are framed a little differently and the titles otherwise sit at
-different heights.
+**The section shows and does not explain**: each card is an image, its name
+and one line, nothing more. Both pictures sit in the same fixed box
+(380px, 280px on a phone) so the cards level; the pin is laid in with
+`contain` on black, since its wings reach the edge of its frame, the token
+with `cover`.
 
 The technical part (Part 03.2 — how it is made: the specification list and
 the maker's sheet) was struck out at the Chapter's word. The sheets remain in

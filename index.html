@@ -918,9 +918,11 @@ footer .fmotto{font-family:'Mrs Saint Delafield',cursive; color:var(--crimson-br
   box-shadow:0 18px 40px rgba(0,0,0,.48),inset 0 0 0 1px rgba(226,229,234,.12)}
 #regalia .pin.second{border-color:rgba(203,168,103,.30);
   box-shadow:0 18px 40px rgba(0,0,0,.48),inset 0 0 0 1px rgba(203,168,103,.10)}
-#regalia .pin figure{margin:0}
-#regalia .pin img{display:block;width:100%;height:auto;
-  filter:drop-shadow(0 14px 22px rgba(0,0,0,.62)) drop-shadow(0 3px 4px rgba(0,0,0,.5))}
+#regalia .pin figure{margin:0 0 20px}
+#regalia .pin img{display:block;width:100%;height:380px;object-fit:cover;border-radius:8px;background:#000;
+  border:1px solid rgba(203,168,103,.22);box-shadow:0 14px 26px rgba(0,0,0,.55)}
+#regalia .pin.first img{object-fit:contain}
+@media(max-width:780px){#regalia .pin img{height:280px}}
 #regalia .pin h3{margin:auto 0 6px;font:700 23px/1.16 'Cinzel',serif;color:#f1eee5}
 #regalia .pin .pin-who{margin:0;font:600 10.5px/1.4 'Oswald',sans-serif;letter-spacing:.16em;
   text-transform:uppercase;color:var(--gold-bright)}
@@ -1293,20 +1295,20 @@ footer .fmotto{font-family:'Mrs Saint Delafield',cursive; color:var(--crimson-br
       <h2><span class="section-prefix">SECTION 03 — </span>Extra Regalia &middot; The Pin</h2>
     </div>
 
-    <!-- ---------- the two borders ---------- -->
-    <div class="part-locator">PART 03.1 — THE TWO BORDERS</div>
+    <!-- ---------- the pin and the token ---------- -->
+    <div class="part-locator">PART 03.1 — THE PIN</div>
     <div class="pins">
 
       <article class="pin first">
-        <figure><img src="assets/pin-president.webp?v=20260909" alt="The Chapter pin with the braided silver border, worn by the Presidents, the Most Honorary and the Founders" loading="lazy"></figure>
-        <h3>The Braided Silver</h3>
-        <p class="pin-who">Presidents &middot; Most Honorary (Grand Masters) &middot; Founders</p>
+        <figure><img src="assets/pin-winged-roundel.webp?v=20260928" alt="The Hellas Chapter pin: the silver roundel with the Corinthian helmet, WIDOWS SONS, Est. 2026 and HELLAS CHAPTER, set upon a gold triangle between two gold wings" loading="lazy"></figure>
+        <h3>The Pin</h3>
+        <p class="pin-who">Worn upon the vest, or in a Masonic Lodge where the Lodge accepts it</p>
       </article>
 
       <article class="pin second">
-        <figure><img src="assets/pin-member.webp?v=20260909b" alt="The Chapter pin with the plain gold edge, worn by all other members" loading="lazy"></figure>
-        <h3>The Gold Edge</h3>
-        <p class="pin-who">All other members</p>
+        <figure><img src="assets/token-hellas-chapter.webp?v=20260928" alt="The Hellas Chapter token in its leather case: a struck silver coin with the Corinthian helmet, WIDOWS SONS, Est. 2026 and HELLAS CHAPTER" loading="lazy"></figure>
+        <h3>The Token</h3>
+        <p class="pin-who">Exchanged as a gift between Widows Sons brothers</p>
       </article>
 
     </div>
