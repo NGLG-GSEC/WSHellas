@@ -103,6 +103,9 @@
     }
     return v;
   }
+  /* A Grand Master is always Most Honorary — in the form, on import, and in
+     the vest configurator alike. */
+  function rules(r){ if(r.office === 'Grand Master') r.honorary = 'Most Honorary'; return r; }
   function problems(r){
     var out = [];
     FIELDS.forEach(function(f){
@@ -303,15 +306,19 @@
       '<div class="reg-foot"><button type="button" class="btn" data-cancel>Cancel</button><button type="button" class="btn solid" data-save>Save</button></div>');
     var form = m.querySelector('form'), errs = m.querySelector('.reg-errs');
     function honorState(){
+      var gm = form.office.value === 'Grand Master';
+      if(gm) form.honorary.value = 'Most Honorary';
+      form.honorary.disabled = gm; form.honorary.title = gm ? 'A Grand Master is always Most Honorary' : '';
       var on = form.honorary.value !== 'No', lab = m.querySelector('[data-f=honoraryDate]');
       lab.classList.toggle('off', !on); form.honoraryDate.disabled = !on; if(!on) form.honoraryDate.value = '';
     }
-    form.honorary.addEventListener('change', honorState); honorState();
+    form.honorary.addEventListener('change', honorState); form.office.addEventListener('change', honorState); honorState();
     m.querySelector('[data-cancel]').addEventListener('click', function(){ m.remove(); });
     m.querySelector('[data-save]').addEventListener('click', function(){
       var rec = {};
       Object.keys(v).forEach(function(k){ rec[k] = v[k]; });          // keeps columns not yet in FIELDS
       FIELDS.forEach(function(f){ rec[f.key] = clean(f, form[f.key].value); });
+      rules(rec);
       var p = problems(rec);
       form.querySelectorAll('.bad').forEach(function(x){ x.classList.remove('bad'); });
       FIELDS.forEach(function(f){ if(p.some(function(t){ return t.indexOf(f.en) === 0; })) form[f.key].classList.add('bad'); });
@@ -398,7 +405,7 @@
           ['Edit the rows on the Members sheet and import the file again from the Secretary’s page (Register → Import Excel).'],
           ['A row whose ID is already in the register updates that member. A row with no ID, or a new ID, is added as a new member.'],
           ['Keep the column headings exactly as they are. Dates may be written as dd/mm/yyyy.'],
-          ['Honorary title: No, Honorary or Most Honorary.'],
+          ['Honorary title: No, Honorary or Most Honorary. A Grand Master is always Most Honorary.'],
           ['Founder: Yes or No.'],
           ['Office rank: one of the offices of Article V, Grand Master or Member — the same list as every rank drop-down of the Chapter.'],
           [''],
@@ -438,6 +445,7 @@
         // a column the file does not carry (an older export, say) leaves the
         // member's value as it is; only a new member takes the defaults
         FIELDS.forEach(function(f){ if(!(f.key in rec)) rec[f.key] = cur0 ? (cur0[f.key] || '') : (f.dflt || ''); });
+        rules(rec);
         var p = problems(rec);
         if(rec.id && seen[rec.id]) p.push('ID ' + rec.id + ' appears twice in the file');
         if(p.length){ bad.push('Row ' + (i + 2) + ' (' + (rec.name || '?') + ' ' + (rec.surname || '') + '): ' + p.join('; ')); return; }
