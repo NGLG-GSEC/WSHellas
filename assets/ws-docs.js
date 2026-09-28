@@ -582,6 +582,50 @@ var WSDocs = (function(){
     });
   }
 
+  /* -----------------------------------------------------------------
+     The Letter of the Officers — a formal letter giving every office of
+     Article V, the real name of the brother who holds it and his road
+     name. Drawn from OFFICERS, so it always says what Section 04 says.
+     It is dated on the day it is issued, not on the founding date.
+     ----------------------------------------------------------------- */
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function today(){ var d = new Date(); return { text: d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(),
+    stamp: ('0'+d.getDate()).slice(-2) + ('0'+(d.getMonth()+1)).slice(-2) + String(d.getFullYear()).slice(-2) }; }
+
+  function officersLetter(){
+    var t = today(), F = filled().length;
+    var spec = secretariat(5, {en:'Letter of the Officers', el:'Επιστολή Αξιωματικών'}, [
+
+      { title:{en:'I. Address', el:'Προσφώνηση'},
+        paragraphs:[
+          {en:'To the Officers and Brethren of every Chapter of Widows Sons Masonic Riders Association, to kindred Motorcycle Clubs and organisations, and to all whom it may concern: greeting.',
+           el:'Προς τους Αξιωματικούς και τους Αδελφούς παντός Chapter της Widows Sons Masonic Riders Association, προς τα συγγενή Motorcycle Clubs και οργανώσεις, και προς πάντα ενδιαφερόμενον: χαίρετε.'},
+          {en:'We have the honour to make known to you the officers of Widows Sons MRA — Hellas Chapter, as they stand at the date of this letter. Each office of Article V of the By-Laws is given below together with the real name of the brother who holds it and the road name by which he is known among the brethren.',
+           el:'Έχουμε την τιμή να σας γνωστοποιήσουμε τους αξιωματικούς της Widows Sons MRA — Hellas Chapter, ως έχουν κατά την ημερομηνία της παρούσης. Έκαστο αξίωμα του Άρθρου V του Κανονισμού παρατίθεται κατωτέρω μαζί με το πραγματικό όνομα του αδελφού που το κατέχει και το όνομα του δρόμου με το οποίο είναι γνωστός μεταξύ των αδελφών.'} ] },
+
+      { title:{en:'II. The Officers of the Chapter', el:'Οι Αξιωματικοί του Chapter'},
+        table:{ head:['No.','Office','Real Name','Road Name'], widths:[7,37,32,24],
+                rows: OFFICERS.map(function(o, i){
+                  return [ { content:String(i + 1), styles:{ halign:'center', fontStyle:'bold', textColor:[158,27,31], fontSize:8.6 } },
+                           office(o.en, o.el), person(o.name), road(o.road) ];
+                }),
+                note:'Nos. 1 to 6 are the Principal Officers — Κύριοι Αξιωματικοί — of the Chapter; the remainder are held by appointment of the President. ' +
+                     F + ' of the ' + OFFICERS.length + ' offices are held at the date of this letter. A road name shown as to be advised has not yet been entered with the Secretary.' } },
+
+      { title:{en:'III. Correspondence', el:'Αλληλογραφία'},
+        paragraphs:[
+          {en:'Correspondence for the Chapter is addressed to the Secretary, and matters of the road to the Road Captain. We shall be glad to receive in return the officers of your own Chapter, and hold ourselves ready to welcome any of your brethren who may ride among us.',
+           el:'Η αλληλογραφία προς το Chapter απευθύνεται στον Γραμματέα, τα δε θέματα του δρόμου στον Αρχηγό Αποστολής. Θα χαρούμε να λάβουμε αντιστοίχως τους αξιωματικούς του δικού σας Chapter, και δηλώνουμε έτοιμοι να υποδεχθούμε κάθε αδελφό σας που θα ταξιδέψει μαζί μας.'} ] }
+
+    ], {
+      closing:[ {en:'With fraternal regards, we remain yours on the Level and upon the Square.',
+                 el:'Με αδελφικούς χαιρετισμούς, παραμένουμε δικοί σας επί της Στάθμης και επί της Γωνίας.'} ]
+    });
+    spec.date = t.text;
+    spec.file = 'Hellas-Chapter-Letter-of-the-Officers-' + t.stamp + '-v1';
+    return spec;
+  }
+
   /* =================================================================
      The catalogue, as the Secretary's page shows it.
      ================================================================= */
@@ -619,7 +663,10 @@ var WSDocs = (function(){
       note:'The record of an assembly, its attendance and its decisions.' },
     { no:4, category:'secretariat', build:roster,
       title:{en:'Report of the Officers and the Members', el:'Έκθεση Αξιωματικών και Μελών'},
-      note:'Every office of Article V, the brother who holds it and his term, with the roll of members — counted and drawn at the head.' }
+      note:'Every office of Article V, the brother who holds it and his term, with the roll of members — counted and drawn at the head.' },
+    { no:5, category:'secretariat', build:officersLetter,
+      title:{en:'Letter of the Officers', el:'Επιστολή Αξιωματικών'},
+      note:'A formal letter giving every office, the real name of the brother who holds it and his road name.' }
   ];
 
   function list(category){
@@ -630,6 +677,7 @@ var WSDocs = (function(){
   return {
     catalogue: CATALOGUE, list: list,
     officers: officers,            /* the Officers document, called for by name */
+    officersLetter: officersLetter,/* the Letter of the Officers, issued from Section 04 */
     FOUNDING: FOUNDING, EXECUTED: EXECUTED
   };
 })();

@@ -435,7 +435,9 @@
     }
 
     if(spec.seal !== false && art && art.seal){
-      doc.addImage(art.seal, fmt(art.seal), CX - SEAL/2, base - SEAL + 2, SEAL, SEAL);
+      /* the seal sits clear of its caption: art cut edge to edge would
+         otherwise run into the words beneath it */
+      doc.addImage(art.seal, fmt(art.seal), CX - SEAL/2, base - SEAL - 1, SEAL, SEAL);
       line(doc, 'OFFICIAL SEAL OF CHAPTER HELLAS',
            {size:6.2, spacing:0.4, colour:FAINT, align:'center', y:base + capH});
     }

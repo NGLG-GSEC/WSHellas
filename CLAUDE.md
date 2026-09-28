@@ -149,6 +149,18 @@ The overlay must carry `[hidden]{display:none}` of its own: its `display:flex`
 otherwise outranks the `hidden` attribute and an invisible panel sits over the
 whole page, swallowing every click.
 
+### The Letter of the Officers
+
+Under the officers of Section 04 a button, **Letter of the Officers**, issues a
+formal letter as a sealed, signed PDF: every office of Article V with the real
+name of the brother who holds it and his road name. It is Secretariat document
+no. 5 in `ws-docs.js` (`officersLetter`), drawn from the same `OFFICERS` array,
+so a name or road name entered there reaches the letter; a road name not yet
+entered reads *to be advised*. It is dated the day it is issued and saved as
+`Hellas-Chapter-Letter-of-the-Officers-DDMMYY-v1.pdf` (`spec.file`). The main
+page loads `ws-office.js` and `ws-docs.js` only when the button is pressed, and
+carries `#wsAutograph` for the President's hand.
+
 ## The pin
 
 Section 03 shows the extra regalia in one part, **03.1 — The Pin**, as two

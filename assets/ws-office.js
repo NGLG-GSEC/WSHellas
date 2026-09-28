@@ -18,7 +18,7 @@ var WSDoc = (function(){
      renderer older than the register it is asked to draw. Raise it
      whenever a document, the renderer or the register changes, and raise
      it in the same breath on the pages that carry the art. */
-  var EDITION = '20260928';
+  var EDITION = '20260928b';
   var PARTS = ['assets/vendor/jspdf.umd.min.js',
                'assets/vendor/jspdf.plugin.autotable.min.js',
                'assets/vendor/ws-fonts.js',
@@ -88,6 +88,7 @@ var WSDoc = (function(){
 
   function english(v){ return (typeof v === 'string') ? v : ((v && v.en) || ''); }
   function fileName(spec, ext){
+    if(spec.file){ return spec.file + '.' + ext; }
     var n = 'Chapter Hellas ' + english(spec.subject) + ' ' + (spec.date || '');
     return n.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.' + ext;
   }
