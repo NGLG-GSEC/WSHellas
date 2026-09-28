@@ -134,6 +134,21 @@ a font or a column count and re-measure `scrollHeight - clientHeight` on every
 shell, **in all three tongues**: Greek and Spanish run longer than the English
 the height was set for.
 
+### The Charges button
+
+The duty is no longer read on the back of the vest. `assets/ws-charges.js`,
+loaded by both pages, hides the duty (and the yoke above it) and puts a
+round **CHARGES** button in its place; the button opens the duty in a full
+reading panel with a close × at its top right (Esc and a click outside also
+close it). The duty stays in the page, hidden, so `ws-lang.js` still
+translates it in place and the panel copies it the moment it opens — it is
+always read in the tongue the page is in. The button's own label is set in
+the script, in all three tongues, on every `ws:lang` event.
+
+The overlay must carry `[hidden]{display:none}` of its own: its `display:flex`
+otherwise outranks the `hidden` attribute and an invisible panel sits over the
+whole page, swallowing every click.
+
 ## The pin
 
 Section 03 shows the extra regalia in one part, **03.1 — The Pin**, as two
